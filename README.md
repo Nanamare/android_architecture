@@ -19,4 +19,4 @@ Model-View-ViewModel (Databinding, RxJava, AAC LiveData, AAC ViewModel)
 Model-View-ViewModel (Databinding, RxJava, AAC LiveData, AAC ViewModel, KOIN)
 
 #### chapter 7
-Model-View-ViewModel (Databinding, RxJava, AAC LiveData, AAC ViewModel, DAGGER2)
+Model-View-ViewModel (Databinding, RxJava, AAC LiveData, AAC ViewModel, DAGGER2) + scabbard(Optional)
