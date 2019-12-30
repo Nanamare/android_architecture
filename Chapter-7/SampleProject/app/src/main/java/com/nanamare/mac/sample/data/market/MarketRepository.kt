@@ -1,15 +1,20 @@
 package com.nanamare.mac.sample.data.market
 
 import com.nanamare.mac.sample.api.upbit.MarketModel
+import javax.inject.Inject
+import javax.inject.Singleton
 
-object MarketRepository : MarketSource {
+@Singleton
+class MarketRepository @Inject constructor(
+    private val marketRemoteDataSource: MarketRemoteDataSource
+) : MarketSource {
 
     override fun getMarketList(success: (List<MarketModel>) -> Unit, failed: () -> Unit) {
-        MarketRemoteDataSource.getMarketList(success, failed)
+        marketRemoteDataSource.getMarketList(success, failed)
     }
 
     override fun close() {
-        MarketRemoteDataSource.close()
+        marketRemoteDataSource.close()
     }
 
 

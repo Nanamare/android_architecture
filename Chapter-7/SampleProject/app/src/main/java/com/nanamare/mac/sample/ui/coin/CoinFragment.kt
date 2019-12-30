@@ -17,6 +17,7 @@ import com.nanamare.mac.sample.ext.createFactory
 import com.nanamare.mac.sample.ui.MainActivity
 import com.nanamare.mac.sample.vm.CoinViewModel
 import kotlinx.android.synthetic.main.fragment_coin_list.*
+import javax.inject.Inject
 
 class CoinFragment : BaseFragment<FragmentCoinListBinding>(R.layout.fragment_coin_list),
     SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
@@ -25,9 +26,8 @@ class CoinFragment : BaseFragment<FragmentCoinListBinding>(R.layout.fragment_coi
 
     private val adapter: TickerAdapter by lazy { TickerAdapter() }
 
-    private val coinVM: CoinViewModel by lazy {
-        ViewModelProviders.of(this, CoinViewModel().createFactory())[CoinViewModel().javaClass]
-    }
+    @Inject
+    lateinit var coinVM: CoinViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

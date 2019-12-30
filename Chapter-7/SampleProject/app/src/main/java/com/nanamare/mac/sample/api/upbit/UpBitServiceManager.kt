@@ -4,23 +4,24 @@ import com.nanamare.mac.sample.api.ServiceDefine
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class UpBitServiceManager {
+@Singleton
+class UpBitServiceManager @Inject constructor() {
+
+    fun getAllMarketList(): Single<Response<List<MarketModel>>> {
+        return SERVICE.getAllMarketList()
+            .subscribeOn(Schedulers.io())
+    }
+
+    fun getTickerList(ticketList: MutableList<String>): Single<Response<List<CoinModel>>> {
+        return SERVICE.getTickerList(ticketList.joinToString())
+            .subscribeOn(Schedulers.io())
+    }
 
     companion object {
-
         private val SERVICE = ServiceDefine.retrofit.create(UpBitService::class.java)
-
-        fun getAllMarketList(): Single<Response<List<MarketModel>>> {
-            return SERVICE.getAllMarketList()
-                .subscribeOn(Schedulers.io())
-        }
-
-        fun getTickerList(ticketList: MutableList<String>): Single<Response<List<CoinModel>>> {
-            return SERVICE.getTickerList(ticketList.joinToString())
-                .subscribeOn(Schedulers.io())
-        }
-
     }
 
 }

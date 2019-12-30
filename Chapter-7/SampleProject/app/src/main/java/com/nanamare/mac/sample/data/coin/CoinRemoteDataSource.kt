@@ -4,8 +4,13 @@ import com.nanamare.mac.sample.api.DisposableManager
 import com.nanamare.mac.sample.api.upbit.CoinModel
 import com.nanamare.mac.sample.api.upbit.UpBitServiceManager
 import io.reactivex.android.schedulers.AndroidSchedulers
+import javax.inject.Inject
+import javax.inject.Singleton
 
-object CoinRemoteDataSource : CoinSource {
+@Singleton
+class CoinRemoteDataSource @Inject constructor(
+    private val upBitServiceManager: UpBitServiceManager
+) : CoinSource {
 
     private var disposableManager: DisposableManager = DisposableManager()
 
@@ -15,7 +20,7 @@ object CoinRemoteDataSource : CoinSource {
         failed: () -> Unit
     ) {
         disposableManager.add(
-            UpBitServiceManager.getTickerList(ticketList)
+            upBitServiceManager.getTickerList(ticketList)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     it.body()?.let(success)

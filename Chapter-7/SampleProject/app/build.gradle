@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: "scabbard.gradle"
+
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -25,6 +27,12 @@ android {
 
     dataBinding {
         enabled true
+    }
+
+    scabbard {
+        enabled true
+        failOnError true // default false
+        fullBindingGraphValidation true // default false
     }
 }
 

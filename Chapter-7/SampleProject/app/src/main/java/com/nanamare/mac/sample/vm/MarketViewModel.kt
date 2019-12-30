@@ -4,11 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nanamare.mac.sample.base.BaseViewModel
 import com.nanamare.mac.sample.data.market.MarketRepository
-import com.nanamare.mac.sample.di.ActivityScope
+import com.nanamare.mac.sample.di.scope.ActivityScope
 import javax.inject.Inject
 
 @ActivityScope
-class MarketViewModel @Inject constructor() : BaseViewModel() {
+class MarketViewModel @Inject constructor(
+    private var marketRepository : MarketRepository
+) : BaseViewModel() {
 
     private var _market = MutableLiveData<LinkedHashMap<String, List<String>>>()
 
@@ -17,7 +19,7 @@ class MarketViewModel @Inject constructor() : BaseViewModel() {
     fun onMarketClick() {
         isLoadingObservable.value = true
         val marketMap: LinkedHashMap<String, List<String>> = LinkedHashMap()
-        MarketRepository.getMarketList(success = {
+        marketRepository.getMarketList(success = {
             val marketList = listOf<String>().toMutableList()
             it.map { marketModel ->
                 marketModel.market!!.split("-")[0].let { market ->
@@ -34,7 +36,7 @@ class MarketViewModel @Inject constructor() : BaseViewModel() {
     }
 
     override fun close() {
-        MarketRepository.close()
+        marketRepository.close()
     }
 
 }

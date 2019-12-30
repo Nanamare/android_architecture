@@ -1,4 +1,4 @@
-package com.nanamare.mac.sample.di
+package com.nanamare.mac.sample.di.scope
 
 import javax.inject.Scope
 
