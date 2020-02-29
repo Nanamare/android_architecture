@@ -25,7 +25,7 @@ abstract class BaseActivity<B : ViewDataBinding>(
     }
 
     fun showLoadingDialog() {
-        if(dialog == null) {
+        if (dialog == null) {
             dialog = ProgressDialogFragment().apply {
                 show(supportFragmentManager, PROGRESS_DIALOG_FRAGMENT)
             }
@@ -33,16 +33,14 @@ abstract class BaseActivity<B : ViewDataBinding>(
     }
 
     fun hideLoadingDialog() {
-        if(dialog != null) {
+        if (dialog != null) {
             dialog?.dismiss()
             dialog = null
         }
     }
 
-    fun goToFragment(cls: Class<*>, args: Bundle?) {
+    fun goToFragment(fragment: Fragment) {
         try {
-            val fragment = cls.newInstance() as Fragment
-            fragment.arguments = args
             val fragmentManager = supportFragmentManager
             fragmentManager.beginTransaction().replace(R.id.fl_content, fragment).commit()
         } catch (e: Exception) {

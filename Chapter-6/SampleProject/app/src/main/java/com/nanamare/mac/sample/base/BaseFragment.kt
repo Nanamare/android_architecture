@@ -22,8 +22,8 @@ abstract class BaseFragment<B : ViewDataBinding>(
         return binding.root
     }
 
-    fun goToFragment(cls: Class<*>, args: Bundle?) {
-        (activity as? BaseActivity<*>)?.goToFragment(cls, args)
+    fun goToFragment(fragment: Fragment) {
+        (activity as? BaseActivity<*>)?.goToFragment(fragment)
     }
 
     fun showLoadingDialog() {

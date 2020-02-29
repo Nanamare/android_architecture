@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.malinskiy.superrecyclerview.OnMoreListener
@@ -16,7 +15,7 @@ import com.nanamare.mac.sample.vm.CoinViewModel
 import kotlinx.android.synthetic.main.fragment_coin_list.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CoinFragment : BaseFragment<FragmentCoinListBinding>(R.layout.fragment_coin_list),
+class CoinFragment: BaseFragment<FragmentCoinListBinding>(R.layout.fragment_coin_list),
     SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
 
     private lateinit var ticketList: MutableList<String>
@@ -36,7 +35,7 @@ class CoinFragment : BaseFragment<FragmentCoinListBinding>(R.layout.fragment_coi
             showLoadingDialog()
             getCoins(ticketList)
 
-            isLoadingObservable.observe(this@CoinFragment, Observer {
+            isLoadingObservable.observe(viewLifecycleOwner, Observer {
                 when {
                     it -> showLoadingDialog()
                     else -> hideLoadingDialog()
