@@ -12,10 +12,9 @@ import com.nanamare.mac.sample.R
 import com.nanamare.mac.sample.adapter.TickerAdapter
 import com.nanamare.mac.sample.base.BaseFragment
 import com.nanamare.mac.sample.databinding.FragmentCoinListBinding
-import com.nanamare.mac.sample.ext.createFactory
 import com.nanamare.mac.sample.vm.CoinViewModel
 import kotlinx.android.synthetic.main.fragment_coin_list.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CoinFragment : BaseFragment<FragmentCoinListBinding>(R.layout.fragment_coin_list),
     SwipeRefreshLayout.OnRefreshListener, OnMoreListener {

@@ -4,7 +4,6 @@ import com.nanamare.mac.sample.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.core.context.GlobalContext.get
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import retrofit2.CallAdapter

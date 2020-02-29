@@ -8,7 +8,7 @@ import com.nanamare.mac.sample.base.BaseActivity
 import com.nanamare.mac.sample.databinding.ActivityMainBinding
 import com.nanamare.mac.sample.ui.market.MarketListFragment
 import com.nanamare.mac.sample.vm.MarketViewModel
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
