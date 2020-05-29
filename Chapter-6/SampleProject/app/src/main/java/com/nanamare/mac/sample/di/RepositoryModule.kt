@@ -9,11 +9,11 @@ import com.nanamare.mac.sample.data.market.MarketSource
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    single { CoinRepository(get()) }
-    single { MarketRepository(get()) }
+    single { CoinRepository(get()) as CoinSource }
+    single { MarketRepository(get()) as MarketSource }
 }
 
 val dataSourceModule = module {
-    single { CoinRemoteDataSource(get()) as CoinSource }
-    single { MarketRemoteDataSource(get()) as MarketSource}
+    single { CoinRemoteDataSource(get()) }
+    single { MarketRemoteDataSource(get()) }
 }
